@@ -80,7 +80,7 @@ fun ShowAlertDialog(openDialog: MutableState<Boolean>, texto: String) {
                 openDialog.value = false
             },
             title = {
-                Text("Button Dialog Alert")
+                Text("Login")
             },
             text = {
                 Text(texto)

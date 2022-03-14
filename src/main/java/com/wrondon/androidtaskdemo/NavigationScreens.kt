@@ -1,5 +1,7 @@
 package com.wrondon.androidtaskdemo
 
+
+
 import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
@@ -8,6 +10,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
+
+import androidx.compose.foundation.text.KeyboardOptions
+
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -22,6 +27,12 @@ import androidx.compose.ui.input.pointer.consumeAllChanges
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -32,6 +43,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.wrondon.androidtaskdemo.viewmodels.UserViewModel
 import kotlin.math.roundToInt
+
 
 sealed class Screen(val route: String, @StringRes val resourceId: Int) {
     object Home : Screen("Home Profile", R.string.home)
@@ -263,7 +275,6 @@ fun Login(navController: NavController, mainViewModel : UserViewModel) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var openDialog = remember { mutableStateOf(false) }
-    var loginMessage = remember { mutableStateOf(mainViewModel.loginMessage) }
 
     Box(Modifier.fillMaxSize()){
         Image(
@@ -295,22 +306,30 @@ fun Login(navController: NavController, mainViewModel : UserViewModel) {
             TextField(
                 value = email,
                 onValueChange = { email = it },
-                label = { Text("Email") }
+                label = { Text("Email") },
+                textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
+                modifier = Modifier.padding(20.dp).background(Color.Red)
+
             )
             TextField(
                 value = password,
                 onValueChange = { password = it },
-                label = { Text("Password") }
+                label = { Text("Enter password") },
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                textStyle = TextStyle(color = Color.Blue, fontWeight = FontWeight.Bold),
+                modifier = Modifier.padding(20.dp).background(Color.Red)
             )
             Button(onClick = {
                 openDialog.value = true
                 mainViewModel.login(email,password)
+                //mainViewModel.login("eve.holt@reqres.in","cityslicka")
                 Log.d("empty-comp"," >>>>>>> ${mainViewModel.loginMessage}")
-                //loginMessage = mainViewModel.loginMessage
             }) {
                 Text("login")
             }
-            ShowAlertDialog(openDialog, "The response for the login button is :\n\n $loginMessage")
+            ShowAlertDialog(openDialog, "\n\n ${mainViewModel.loginMessage}")
+
 
         }
     }

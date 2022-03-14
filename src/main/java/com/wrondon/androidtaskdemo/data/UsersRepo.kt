@@ -31,14 +31,13 @@ class UsersRepo @Inject constructor(private val service: ReqResService) {
                     val loginResponse = service.login(username, password)
                     if(loginResponse.isSuccessful) {
                         val respUser = LoggedInUser(java.util.UUID.randomUUID().toString(), " $username (display name)")
-                        result = " GOOD: loginResponse.message()  : ${loginResponse.message()}  body: ${loginResponse.body()}"
+                        result = " Authenticated : \n  ${loginResponse.body()}"
                     } else {
-                        val message = " WRONG!: loginResponse.message()  : ${loginResponse.message()} error body ${loginResponse.errorBody()
-                            ?.string()}"
+                        val message = " WRONG! Identification :\n ${loginResponse.errorBody()?.string()}"
                         result = message
                     }
                 } catch (e: Throwable) {
-                    Log.d("empty-comp2"," WRONG!!!  exception(THROWABLE): $e")
+                    Log.d("empty-comp2"," WRONG - EXCEPTION - AUTHENTICATION!!!  exception(THROWABLE): $e")
                 }
             }
         }
