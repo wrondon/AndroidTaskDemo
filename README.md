@@ -1,14 +1,18 @@
-This code is based on public Samples, Templates and Repositories found in Github,
+# Android Task Demo Project
+
+
+
+### This code is based on public Samples, Templates and Repositories found in Github,
 mostly created by Google. Also using some topics-features ideas found in some job interview Tasks.
 
-It's intended just to show and enable the discussion of some Android topics or features, e.g.:
+##### It's intended just to show and enable the discussion of some Android topics or features, e.g.:
 	Hilt/Dagger for Dependency Injection
 	Retrofit for API Rest calls
 	Jetpack Architecture: Navigation, Model-View,
 	Jetpack Compose (e.g: LazyList)
 	Libraries such as: Coil (Images), Accompanist (for Compose)
 
-Using TASK-project(s) with examples of topics such as:
+##### Using TASK-project(s) with examples of topics such as:
 	Using either Compose and/or traditional Views:
 		Use splash screen
 		Use buttons to go into different parts of the App
