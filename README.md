@@ -3,7 +3,7 @@
 
 
 ### This code is based on public Samples, Templates and Repositories found in Github,
-mostly created by Google. Also using some topics-features ideas found in some job interview Tasks.
+mostly created by Google. Also using topics-features ideas found in job interview Tasks.
 
 ##### It's intended just to show and enable the discussion of some Android topics or features, e.g.:
 	Hilt/Dagger for Dependency Injection
